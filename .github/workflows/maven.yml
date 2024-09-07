@@ -30,6 +30,10 @@ jobs:
 
     - name: SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v2.3.0
+      with:
+          args: |
+            -Dsonar.host.url=${{ secrets.SONAR_URL }}
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
       env:
-        SONAR_URL: ${{ secrets.SONAR_URL }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_URL: ${{ secrets.SONAR_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
