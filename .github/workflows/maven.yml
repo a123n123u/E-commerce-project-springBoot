@@ -28,8 +28,8 @@ jobs:
     - name: Build with Maven
       run: mvn package --file JtProject/pom.xml -DskipTests
 
-    - name: Debug Environment Variables
-      run: |
-        echo "SONAR_URL=${{ secrets.SONAR_URL }}"
-        echo "SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}"
-
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v2.3.0
+      env:
+        SONAR_URL: ${{ secrets.SONAR_URL }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
